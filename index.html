@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KI offiziell machen. Added Value Positionierung</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand: #171412;
+    --brand-mid: #8B6914;
+    --brand-pale: #F0EAE0;
+    --cream: #F6F1EA;
+    --warm-white: #fdfbf8;
+    --ink: #171412;
+    --ink-muted: #5c5c58;
+    --ink-faint: #9a9a94;
+    --rule: #d4cfc6;
+    --accent: #C4862A;
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 40px 80px;
+  }
+
+  /* HEADER */
+  .masthead {
+    padding: 48px 0 36px;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .masthead-brand {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--brand);
+  }
+  .masthead-meta {
+    font-size: 12px;
+    color: var(--ink-faint);
+    text-align: right;
+  }
+
+  /* HERO */
+  .hero {
+    padding: 64px 0 56px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 24px;
+  }
+  .hero-headline {
+    font-family: var(--serif);
+    font-size: 52px;
+    line-height: 1.08;
+    font-weight: 700;
+    color: var(--ink);
+    max-width: 680px;
+    margin-bottom: 32px;
+  }
+  .hero-headline em {
+    font-style: italic;
+    color: var(--brand);
+  }
+  .hero-thesis {
+    font-size: 19px;
+    line-height: 1.6;
+    color: var(--ink-muted);
+    max-width: 580px;
+    font-weight: 300;
+  }
+  .hero-thesis strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* SECTION */
+  .section {
+    position: relative;
+    padding: 56px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .section:last-child { border-bottom: none; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  .section-headline {
+    font-family: var(--serif);
+    font-size: 34px;
+    line-height: 1.15;
+    font-weight: 700;
+    margin-bottom: 20px;
+    max-width: 600px;
+  }
+
+  .section-body {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--ink-muted);
+    max-width: 620px;
+  }
+  .section-body p { margin-bottom: 16px; }
+  .section-body p:last-child { margin-bottom: 0; }
+  .section-body strong { color: var(--ink); font-weight: 500; }
+
+  /* STAT ROW */
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 36px 0;
+  }
+  .stat-cell {
+    background: var(--warm-white);
+    padding: 24px 20px;
+  }
+  .stat-number {
+    font-family: var(--serif);
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--brand);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-label {
+    font-size: 13px;
+    color: var(--ink-muted);
+    line-height: 1.45;
+  }
+  .stat-source {
+    font-size: 11px;
+    color: var(--ink-faint);
+    margin-top: 6px;
+  }
+
+  /* PULLQUOTE */
+  .pullquote {
+    border-left: 3px solid var(--brand);
+    padding: 4px 0 4px 28px;
+    margin: 36px 0;
+  }
+  .pullquote-text {
+    font-family: var(--serif);
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--ink);
+    font-style: italic;
+    margin-bottom: 10px;
+  }
+  .pullquote-source {
+    font-size: 12px;
+    color: var(--ink-faint);
+    font-style: normal;
+    letter-spacing: 0.05em;
+  }
+
+  /* TWO COL */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 36px;
+  }
+  .two-col-item {}
+  .two-col-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 10px;
+  }
+  .two-col-text {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ink-muted);
+  }
+  .two-col-text strong { color: var(--ink); font-weight: 500; }
+
+  /* INSIGHT BOX */
+  .insight-box {
+    background: var(--brand);
+    color: #F0EAE0;
+    padding: 36px 40px;
+    border-radius: 4px;
+    margin: 36px 0;
+  }
+  .insight-box-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #D4A853;
+    margin-bottom: 16px;
+  }
+  .insight-box-text {
+    font-family: var(--serif);
+    font-size: 26px;
+    line-height: 1.35;
+    color: #F7F2EA;
+    font-weight: 400;
+  }
+  .insight-box-text em {
+    font-style: italic;
+    color: #D4A853;
+  }
+
+  /* PARADOX */
+  .paradox {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 36px 0;
+  }
+  .paradox-side {
+    background: var(--warm-white);
+    padding: 28px 24px;
+  }
+  .paradox-side-danger { background: #fdf6f4; }
+  .paradox-icon {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .paradox-icon.red { color: var(--accent); }
+  .paradox-icon.green { color: var(--brand-mid); }
+  .paradox-headline {
+    font-family: var(--serif);
+    font-size: 22px;
+    line-height: 1.3;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+  .paradox-body {
+    font-size: 14px;
+    color: var(--ink-muted);
+    line-height: 1.6;
+  }
+  .paradox-stat {
+    font-family: var(--serif);
+    font-size: 32px;
+    font-weight: 700;
+    margin-top: 16px;
+  }
+  .paradox-stat.red { color: var(--accent); }
+  .paradox-stat.green { color: var(--brand-mid); }
+
+  /* PRODUCT */
+  .product-steps {
+    margin: 36px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .product-step {
+    background: var(--warm-white);
+    padding: 24px 28px;
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+  .product-step-num {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--brand-pale);
+    line-height: 1;
+    padding-top: 2px;
+    -webkit-text-stroke: 1px var(--brand-mid);
+    color: transparent;
+  }
+  .product-step-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .product-step-body {
+    font-size: 14px;
+    color: var(--ink-muted);
+    line-height: 1.6;
+  }
+
+  /* SERVICES */
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 36px 0;
+  }
+  .service-cell {
+    background: var(--warm-white);
+    padding: 24px 24px;
+  }
+  .service-old {
+    font-size: 12px;
+    color: var(--ink-faint);
+    text-decoration: line-through;
+    margin-bottom: 4px;
+  }
+  .service-new {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .service-desc {
+    font-size: 13px;
+    color: var(--ink-muted);
+    line-height: 1.55;
+  }
+
+  /* PRODUCT LADDER */
+  .tier-grid {
+    display: grid;
+    gap: 1px;
+    background: var(--rule);
+  }
+  .tier-grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .tier-grid-2 { grid-template-columns: 1fr 1fr; }
+  .team-card {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+  .ecosystem-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+
+  /* CLOSING */
+  .closing {
+    background: var(--brand);
+    padding: 72px 56px;
+    border-radius: 4px;
+    margin-top: 56px;
+  }
+  .closing-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #D4A853;
+    margin-bottom: 24px;
+  }
+  .closing-headline {
+    font-family: var(--serif);
+    font-size: 48px;
+    line-height: 1.1;
+    color: #F7F2EA;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .closing-headline em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .closing-sub {
+    font-size: 16px;
+    color: #B8965A;
+    max-width: 480px;
+    line-height: 1.6;
+  }
+
+  @media (min-width: 901px) {
+    .section-label {
+      position: relative;
+      left: -150px;
+      width: 130px;
+      height: 0;
+      margin-bottom: 0;
+      display: block;
+      line-height: 1.45;
+      transform: translateY(6px);
+    }
+    .section-label::after { display: none; }
+  }
+
+  @media (max-width: 640px) {
+    .hero-headline { font-size: 36px; }
+    .two-col, .paradox, .services-grid { grid-template-columns: 1fr; }
+    .stat-row { grid-template-columns: 1fr; }
+    .tier-grid, .team-card, .ecosystem-card { grid-template-columns: 1fr !important; }
+    .page { padding: 0 20px 60px; }
+    .closing { padding: 44px 24px; }
+    .closing-headline { font-size: 36px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="masthead">
+    <div class="masthead-brand">Added Value. Interne Positionierung</div>
+    <div class="masthead-meta">Mai 2026 · Arbeitsstand</div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="section" style="padding-top: 48px;">
+    <div class="section-label">Worum es geht</div>
+    <h2 class="section-headline">Alle KI-Aktivitäten. Ein System. Eine Marke: added value.</h2>
+    <div class="section-body">
+      <p>Dieses Dokument ist kein Website-Konzept und keine Leistungsübersicht. Es beschreibt die strategische Weichenstellung, unsere KI-Aktivitäten nicht länger verteilt, beiläufig oder unter bestehenden Angeboten mitzudenken, sondern unter einer eigenständigen Marke zu bündeln.</p>
+
+      <p style="font-family: var(--serif); font-size: 20px; line-height: 1.45; color: var(--ink); margin: 24px 0;">added value wird das neue Gefäß für KI.</p>
+
+      <p>Nicht als Digitalagentur mit KI-Anstrich. Nicht als erweitertes Portfolio von active value. Sondern als eigenständige Positionierung für ein Thema, das gerade erst im Mittelstand ankommt.</p>
+
+      <p>active value bleibt, was es ist: die digitale Umsetzungsmarke für Corporate und E-Commerce. Dieses Geschäft wird weitergeführt. KI wird dort eingesetzt, wo sie Projekte schneller, einfacher oder effizienter macht. Aber active value wird nicht zur KI-Company umgebaut. Das wäre nicht glaubwürdig genug und würde das bestehende Profil verwässern.</p>
+
+      <p>Der ehrliche Ausgangspunkt ist dieser: In den letzten Monaten haben wir ein belastbares KI-Netzwerk aufgebaut, Erfahrungen gesammelt, Gespräche geführt. Saber hat umfangreiche Trainingserfahrung gewonnen. Oliver hat das Thema strategisch durchdrungen. Anton hat Zugänge geschaffen. Es sind echte KI-Kompetenzen entstanden.</p>
+
+      <p>Aber aus unternehmerischer Perspektive, und im Hinblick auf das KI-Zeitalter, in das wir gerade eintreten, sind wir noch nicht stark genug aufgestellt. Zu verteilt. Zu wenig gebündelt. Ohne System, das diese Kompetenzen in Markt und Geschäft übersetzt.</p>
+
+      <p style="font-weight: 500; color: var(--ink);">Was bislang fehlte, war nicht Kompetenz. Was fehlte, war das gemeinsame System.</p>
+
+      <p>Genau dieses System entsteht jetzt. added value bündelt diese Kompetenzen in einer Marke mit klarer Positionierung, klaren Produkten und einem Team, das sich gegenseitig verstärkt. Wer jetzt bündelt, positioniert und strukturiert, läuft dem Markt nicht hinterher. Er kann Referenz werden.</p>
+
+      <p>Darum geht es in diesem Papier.</p>
+    </div>
+  </div>
+  <div class="hero">
+    <div class="hero-eyebrow">Strategische These</div>
+    <h1 class="hero-headline">KI ist in jedem Unternehmen<br>schon angekommen.<br><em>Machen Sie es offiziell.</em></h1>
+    <p class="hero-thesis">Der Markt bietet Training. Der Markt bietet Beratung. Der Markt bietet Tools. Was fehlt: <strong>jemand, der den Übergang gestaltet</strong>: von der ungeregelten, informellen Nutzung zur offiziell verankerten, effizienten Arbeitsweise, die das gesamte Unternehmen trägt.</p>
+  </div>
+
+  <!-- 1. DER MARKT -->
+  <div class="section">
+    <div class="section-label">01 · Marktlage</div>
+    <h2 class="section-headline">Das eigentliche Problem ist nicht Unwissen.</h2>
+    <div class="section-body">
+      <p>Alle Studien zeigen dasselbe Muster: Unternehmen wissen, dass KI relevant ist. Sie kaufen Lizenzen. Sie schicken Leute in Workshops. Und drei Monate später hat sich nichts verändert.</p>
+      <p>Das liegt nicht an der Technologie. Es liegt daran, dass <strong>niemand den richtigen Einstieg adressiert.</strong></p>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat-cell">
+        <div class="stat-number">86%</div>
+        <div class="stat-label">der KMUs erkennen die Relevanz von KI</div>
+        <div class="stat-source">KI-Studie Mittelstand 2025</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-number">23%</div>
+        <div class="stat-label">haben KI-Projekte erfolgreich umgesetzt</div>
+        <div class="stat-source">KI-Studie Mittelstand 2025</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-number">43%</div>
+        <div class="stat-label">der Mittelständler haben keine konkreten KI-Pläne</div>
+        <div class="stat-source">DMB / Salesforce KI-Index 2025</div>
+      </div>
+    </div>
+
+    <div class="section-body">
+      <p>Die Lücke zwischen 86 % und 23 % ist kein Wissensdefizit. Sie ist eine <strong>Legitimierungslücke</strong>. Unternehmen wissen, was sie tun müssten. Aber sie wissen nicht, wie sie anfangen dürfen.</p>
+    </div>
+  </div>
+
+  <!-- 2. DAS PSYCHOLOGISCHE PROBLEM -->
+  <div class="section">
+    <div class="section-label">02 · Der psychologische Befund</div>
+    <h2 class="section-headline">Ein Doppeltes Schamgefühl lähmt den Markt.</h2>
+    <div class="section-body">
+      <p>Was die Studien unter der Oberfläche zeigen, ist ein Paradox: Mitarbeiter sitzen in einer Falle ohne offensichtlichen Ausweg.</p>
+    </div>
+
+    <div class="paradox">
+      <div class="paradox-side paradox-side-danger">
+        <div class="paradox-icon red">Scham 1: KI benutzen</div>
+        <div class="paradox-headline">Wer KI nutzt, gilt als Schummler.</div>
+        <div class="paradox-body">Eine Princeton-Studie bestätigt: Mitarbeiter, die KI-Tools verwenden, werden von Kollegen als weniger kompetent und weniger motiviert wahrgenommen. 45 Prozent verheimlichen ihre Nutzung aktiv.</div>
+        <div class="paradox-stat red">53%</div>
+        <div class="paradox-body" style="margin-top:4px">der Beschäftigten glauben, Kollegen sehen KI-Nutzer als weniger kompetent an.</div>
+      </div>
+      <div class="paradox-side">
+        <div class="paradox-icon green">Scham 2: KI nicht benutzen</div>
+        <div class="paradox-headline">Wer KI nicht nutzt, fühlt sich abgehängt.</div>
+        <div class="paradox-body">Je größer die Welle wird, desto stärker das Unterlegenheitsgefühl bei denen, die noch nicht begonnen haben. Die Sichtbarkeit des Fortschritts anderer macht den ersten Schritt schwerer, nicht leichter.</div>
+        <div class="paradox-stat green">65%</div>
+        <div class="paradox-body" style="margin-top:4px">fühlen sich ängstlich, durch KI ersetzt zu werden. (EY, 2023)</div>
+      </div>
+    </div>
+
+    <div class="pullquote">
+      <div class="pullquote-text">"KI ist ein bisschen wie Doping für alle: Der Leistungsgewinn ist real, aber die moralische Einordnung fehlt , und wer die Regeln kennt, gewinnt."</div>
+      <div class="pullquote-source">Arbeitshypothese Added Value</div>
+    </div>
+
+    <div class="section-body">
+      <p>Kein Workshop löst dieses Problem. Weil das Problem nicht Kompetenz ist, sondern <strong>fehlender Kontext</strong>. Was fehlt, ist die institutionelle Erlaubnis. Und jemand, der sie ausspricht.</p>
+    </div>
+  </div>
+
+  <!-- 3. DER STRATEGISCHE HEBEL -->
+  <div class="section">
+    <div class="section-label">03 · Strategischer Hebel</div>
+    <h2 class="section-headline">KI muss nicht eingeführt werden. Sie muss legitimiert werden.</h2>
+
+    <div class="insight-box">
+      <div class="insight-box-label">Der zentrale Insight</div>
+      <div class="insight-box-text">KI ist in den meisten Unternehmen bereits vorhanden , <em>aber nicht offiziell.</em> Sie sickert ein: auf dem Handy, im Homeoffice, in der Mittagspause. Was fehlt, ist kein Tool und kein Training. Was fehlt, ist die Proklamation.</div>
+    </div>
+
+    <div class="section-body">
+      <p>Das verändert die Rolle von Added Value fundamental. Wir kommen nicht als Technologie-Erklärer. Wir kommen als diejenigen, die den Übergang gestalten: von der informellen Nutzung zur klaren, erlaubten, produktiven Arbeitsweise.</p>
+      <p>Der Unternehmer muss dabei <strong>keine neue Rolle lernen</strong>. Er rutscht in seine alte: Entscheiden. Rahmen setzen. Richtung vorgeben. Das ist kein technisches Projekt. Das ist eine Führungsentscheidung. Wir bereiten sie vor.</p>
+    </div>
+
+    <div class="two-col">
+      <div class="two-col-item">
+        <div class="two-col-label">Was alle anderen sagen</div>
+        <div class="two-col-text"><strong>„Wir bringen KI in euer Unternehmen."</strong><br>Training. Workshops. Use Cases. Strategie-Papiere. Immer vorausgesetzt, dass das Problem Unwissen ist.</div>
+      </div>
+      <div class="two-col-item">
+        <div class="two-col-label">Was Added Value sagt</div>
+        <div class="two-col-text"><strong>„Euer Team nutzt KI schon. Wir machen es offiziell."</strong><br>Kein Training als Einstieg. Sondern Legitimierung. Mit Bestandsaufnahme, klaren Leitplanken und einem offiziellen Startmoment.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. POSITIONIERUNG -->
+  <div class="section">
+    <div class="section-label">04 · Positionierung</div>
+    <h2 class="section-headline">KI-Souveränität. Aber von innen heraus.</h2>
+    <div class="section-body">
+      <p><strong>Added Value macht Unternehmen KI-souverän.</strong> Aber der Begriff meint keinen Endzustand, den man kaufen kann. Er meint einen Prozess, der von innen kommt: aus den Menschen, die KI schon nutzen, aus der Erlaubnis, die sie brauchen, und aus der Klarheit, die danach folgt.</p>
+      <p>Nicht: Wir zeigen euch, wie KI geht.<br>Sondern: <strong>Ihr könnt KI. Wir geben den Rahmen dafür.</strong></p>
+    </div>
+
+    <div class="two-col" style="margin-top: 32px;">
+      <div class="two-col-item">
+        <div class="two-col-label">Wir sind nicht</div>
+        <div class="two-col-text" style="font-size:14px;">
+          Große Beratung mit KI-Praxis<br>
+          Tool-Anbieter oder Reseller<br>
+          KI-Trainer mit Zertifikat<br>
+          Technische Implementierer<br>
+          Akademische KI-Erklärer
+        </div>
+      </div>
+      <div class="two-col-item">
+        <div class="two-col-label">Wir sind</div>
+        <div class="two-col-text" style="font-size:14px;">
+          Moderatoren des Übergangs<br>
+          Gestalter des offiziellen Moments<br>
+          Brücke zwischen Führung und Team<br>
+          Konkret, umsetzungsnah, menschlich<br>
+          Kompetenz ohne Kälte
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. DAS PRODUKT -->
+  <div class="section">
+    <div class="section-label">05 · Das Einstiegsprodukt</div>
+    <h2 class="section-headline">Das trojanische Pferd: Klein anfangen, tief ankern.</h2>
+    <div class="section-body">
+      <p>Das Einstiegsmandat ist bewusst klein. Es soll sich anfühlen wie eine Entscheidung, die der Unternehmer sowieso schon fast getroffen hatte. Kein großes Change-Projekt. Kein langer Pitch. Drei Phasen, Festpreis, vier bis sechs Wochen.</p>
+    </div>
+
+    <div class="product-steps">
+      <div class="product-step">
+        <div class="product-step-num">01</div>
+        <div>
+          <div class="product-step-title">Bestandsaufnahme: Was passiert schon?</div>
+          <div class="product-step-body">Zwei bis drei Gespräche mit Führung und ausgewählten Mitarbeitern. Keine IT-Inventur. Stattdessen: Wer nutzt was, wann, wofür. Und warum verbirgt er es? Das Ergebnis überrascht fast immer: KI ist weiter verbreitet als die Führung ahnt. Dieser Moment hat strategischen Wert.</div>
+        </div>
+      </div>
+      <div class="product-step">
+        <div class="product-step-num">02</div>
+        <div>
+          <div class="product-step-title">Leitplanken: Was ist hier erlaubt?</div>
+          <div class="product-step-body">Ein klares, zweiseitiges Policy-Dokument. Kein Rechtstext. Kein Compliance-Bürokratismus. Welches Tool ist offiziell, was darf rein, was nicht, wie gehen wir mit Kundendaten um. Das Sicherheits- und Datenschutzthema wird aufgelöst, nicht kleingeredet , denn ungeklärte Sicherheitsfragen sind einer der stärksten Hemmfaktoren.</div>
+        </div>
+      </div>
+      <div class="product-step">
+        <div class="product-step-num">03</div>
+        <div>
+          <div class="product-step-title">Der offizielle Moment: KI wird normal.</div>
+          <div class="product-step-body">Keine große Veranstaltung. Aber ein sichtbarer Akt nach innen: die klare Ansage der Geschäftsführung. Schriftlich, persönlich, oder im Team-Meeting. Der Satz, der fehlt, wird ausgesprochen: Ab heute ist KI hier offiziell. Das sind die Regeln. Fangt an.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-body">
+      <p>Das ist nicht das Ende. Es ist der Anker. Wer einmal verstanden hat, was im eigenen Unternehmen schon passiert, will wissen, was als nächstes kommt. Die natürliche Folge: Prozessoptimierung, Use Cases, Messung, Mitarbeiterentwicklung. Auf Basis echter Anwendungsfälle statt abstrakter Trainingsziele.</p>
+    </div>
+  </div>
+
+  <!-- 6. PRODUKTLEITER -->
+  <div class="section">
+    <div class="section-label">06 · Die Produktleiter</div>
+    <h2 class="section-headline">Ein Einstieg. Eine Logik. Eine Richtung.</h2>
+    <div class="section-body">
+      <p>Alle Produkte folgen derselben Grundlogik: Erst den Rahmen schaffen, dann die Menschen befähigen, dann in Prozesse übersetzen. Kein Schritt setzt den vorherigen voraus. Aber jeder macht den nächsten leichter.</p>
+    </div>
+
+    <div style="margin: 36px 0; display: flex; flex-direction: column; gap: 24px;">
+
+      <div style="border: 1px solid var(--rule); border-radius: 4px; overflow: hidden;">
+        <div style="background: #171412; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between;">
+          <span style="font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: #F7F2EA;">Ebene 1 — Starten</span>
+          <span style="font-size: 12px; color: #F0EAE0;">Den Rahmen schaffen</span>
+        </div>
+        <div class="tier-grid tier-grid-3">
+          <div style="background: var(--warm-white); padding: 22px 20px;">
+            <div style="font-size: 11px; font-weight: 500; color: var(--brand); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.08em;">Kernangebot</div>
+            <div style="font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 8px; line-height: 1.3;">KI offiziell machen</div>
+            <div style="font-size: 13px; color: var(--ink-muted); line-height: 1.55;">Bestandsaufnahme, Leitplanken, offizieller Startmoment. Festpreis. Das trojanische Pferd.</div>
+          </div>
+          <div style="background: var(--warm-white); padding: 22px 20px;">
+            <div style="font-size: 11px; font-weight: 500; color: var(--ink-faint); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.08em;">Einzeln oder integriert</div>
+            <div style="font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 8px; line-height: 1.3;">KI-Nutzungskompass</div>
+            <div style="font-size: 13px; color: var(--ink-muted); line-height: 1.55;">Klare Spielregeln: erlaubte Tools, Datenschutzgrundsätze, Rollen, Do's and Don'ts. Kein Compliance-Monster , souveräne Nutzung.</div>
+          </div>
+          <div style="background: var(--warm-white); padding: 22px 20px;">
+            <div style="font-size: 11px; font-weight: 500; color: var(--ink-faint); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.08em;">Aktivierungsformat</div>
+            <div style="font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 8px; line-height: 1.3;">Keynote / Impuls</div>
+            <div style="font-size: 13px; color: var(--ink-muted); line-height: 1.55;">KI entdramatisieren, Lust und Sicherheit erzeugen, den offiziellen Start vorbereiten. Türöffner für Führungskreise und Events.</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="border: 1px solid var(--rule); border-radius: 4px; overflow: hidden;">
+        <div style="background: #2A2220; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between;">
+          <span style="font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: #F7F2EA;">Ebene 2 — Vertiefen</span>
+          <span style="font-size: 12px; color: #F0EAE0;">Menschen befähigen, Richtung klären</span>
+        </div>
+        <div class="tier-grid tier-grid-2">
+          <div style="background: var(--warm-white); padding: 22px 20px;">
+            <div style="font-size: 11px; font-weight: 500; color: var(--ink-faint); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.08em;">Befähigung</div>
+            <div style="font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 8px; line-height: 1.3;">AI Fluency Training</div>
+            <div style="font-size: 13px; color: var(--ink-muted); line-height: 1.55;">Nicht als Prompting-Seminar, sondern als Befähigung zur sicheren, produktiven Nutzung. KI verstehen, sinnvoll anwenden, eigene Routinen entwickeln , am echten Arbeitsplatz, nicht in Übungsaufgaben.</div>
+          </div>
+          <div style="background: var(--warm-white); padding: 22px 20px;">
+            <div style="font-size: 11px; font-weight: 500; color: var(--ink-faint); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.08em;">Führung</div>
+            <div style="font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 8px; line-height: 1.3;">Executive AI Sparring</div>
+            <div style="font-size: 13px; color: var(--ink-muted); line-height: 1.55;">Kein Training, sondern vertraulicher Denkraum. Was bedeutet KI für unsere Führung? Was müssen wir entscheiden? Führung wird handlungsfähig, ohne ein Transformationsprojekt starten zu müssen.</div>
+          </div>
+          <div style="background: var(--warm-white); padding: 22px 20px; grid-column: 1 / -1;">
+            <div style="font-size: 11px; font-weight: 500; color: var(--ink-faint); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.08em;">Strategie</div>
+            <div style="font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 8px; line-height: 1.3;">AI Decision Sprint</div>
+            <div style="font-size: 13px; color: var(--ink-muted); line-height: 1.55;">Relevante Arbeitsbereiche identifizieren, Use Cases bewerten, Potenziale priorisieren. Aus vielen Möglichkeiten wird eine konkrete 90-Tage-Roadmap mit klaren Verantwortlichkeiten.</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="border: 1px solid var(--rule); border-radius: 4px; overflow: hidden;">
+        <div style="background: #C4862A; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between;">
+          <span style="font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: #F7F2EA;">Ebene 3 — Umsetzen</span>
+          <span style="font-size: 12px; color: #F0EAE0;">KI in Prozesse und Wertschöpfung übersetzen</span>
+        </div>
+        <div class="tier-grid tier-grid-2">
+          <div style="background: var(--warm-white); padding: 22px 20px;">
+            <div style="font-size: 11px; font-weight: 500; color: var(--ink-faint); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.08em;">Umsetzung</div>
+            <div style="font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 8px; line-height: 1.3;">Build &amp; Enable Sprint</div>
+            <div style="font-size: 13px; color: var(--ink-muted); line-height: 1.55;">Einen konkreten Use Case nicht nur besprechen, sondern bauen. Prototyp oder Workflow, technische Machbarkeit, befähigtes Team, nächster Ausbauschritt. Hier bleibt Added Value nicht bei Beratung stehen.</div>
+          </div>
+          <div style="background: var(--warm-white); padding: 22px 20px;">
+            <div style="font-size: 11px; font-weight: 500; color: var(--ink-faint); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.08em;">Dauerbegleitung</div>
+            <div style="font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 8px; line-height: 1.3;">KI-Souveränitäts-Retainer</div>
+            <div style="font-size: 13px; color: var(--ink-muted); line-height: 1.55;">Regelmäßiges Sparring, Weiterentwicklung der Leitplanken, Bewertung neuer Use Cases, Review von Fortschritt und Wirkung. KI bleibt kein Einzelprojekt, sondern wird Schritt für Schritt zur Unternehmensfähigkeit.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ecosystem-card" style="border: 1px solid var(--brand-pale); border-radius: 4px; background: var(--brand-pale); padding: 22px 24px;">
+        <div style="font-family: var(--serif); font-size: 28px; color: var(--brand); line-height: 1; padding-top: 2px;">+</div>
+        <div>
+          <div style="font-size: 11px; font-weight: 500; color: var(--brand-mid); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.08em;">Ökosystem &amp; Sichtbarkeit</div>
+          <div style="font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 6px;">KI und Currywurst</div>
+          <div style="font-size: 13px; color: var(--ink-muted); line-height: 1.55;">Kein Produkt im klassischen Sinne, aber ein wichtiger Teil des Auftritts. Added Value wird nicht nur als Dienstleister sichtbar, sondern als Absender einer menschlicheren KI-Debatte. Netzwerk, Haltung, Gesprächskultur.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="pullquote" style="margin-top: 8px;">
+      <div class="pullquote-text">"KI offiziell machen schafft den Rahmen. AI Fluency befähigt die Menschen. Decision Sprint klärt die Richtung. Build &amp; Enable bringt KI in Prozesse. Der Retainer verankert KI-Souveränität dauerhaft."</div>
+      <div class="pullquote-source">Die Produktlogik in einem Satz</div>
+    </div>
+  </div>
+
+  <!-- 7. ZIELGRUPPE -->
+  <div class="section">
+    <div class="section-label">07 · Zielgruppe</div>
+    <h2 class="section-headline">Nicht alle. Aber genau die Richtigen.</h2>
+    <div class="section-body">
+      <p><strong>Nicht adressiert:</strong> Großunternehmen mit eigenen KI-Teams, Enterprise-Budgets und Inhouse-Expertise. Die brauchen Spezialisten, keine Moderation.</p>
+      <p><strong>Unser Markt:</strong> Mittelständische Unternehmen mit 30 bis 300 Mitarbeitern: wissensintensive Dienstleister, B2B-Unternehmen, Handelsunternehmen mit größeren Teams. Unternehmen, die KI als Thema erkannt haben, aber noch keinen ersten belastbaren Schritt gemacht haben.</p>
+      <p>Die emotionale Zielgruppe ist der Geschäftsführer, der weiß, dass er handeln muss, aber nicht weiß, womit er anfangen soll. Der das Thema nicht noch einmal an eine Beratung delegieren will, die ihm ein 60-seitiges Strategiepapier liefert.</p>
+    </div>
+  </div>
+
+  <!-- 8. DAS TEAM -->
+  <div class="section">
+    <div class="section-label">08 · Das Kernteam</div>
+    <h2 class="section-headline">Wir sind klein, senior und komplementär.</h2>
+    <div class="section-body">
+      <p>Nicht "wir sind viele". Sondern: drei Rollen, die exakt das abdecken, was dieser Moment braucht: Zugang zur Entscheidungsebene, strategische Architektur und menschliche Aktivierung.</p>
+    </div>
+
+    <div style="margin: 36px 0; display: flex; flex-direction: column; gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 4px; overflow: hidden;">
+
+      <div class="team-card" style="background: var(--warm-white); padding: 28px 28px;">
+        <div>
+          <div style="font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brand); margin-bottom: 6px;">Anton Klees</div>
+          <div style="font-family: var(--serif); font-size: 20px; color: var(--ink); line-height: 1.2; margin-bottom: 4px;">Er öffnet die Tür.</div>
+          <div style="font-size: 13px; color: var(--ink-faint);">Netzwerk · Vertrauen · Erster Schritt</div>
+        </div>
+        <div style="font-size: 14px; color: var(--ink-muted); line-height: 1.65;">
+          Anton bringt Unternehmen dazu, das Gespräch überhaupt erst zu beginnen. Er macht Komplexes einfach, wirkt glaubwürdig ohne Beratergestus und hat die Reputation, die Türen öffnet, die sonst geschlossen bleiben. <strong style="color: var(--ink);">Er holt die Leute rein</strong> , mit der Leichtigkeit eines Netzwerkers, dem man vertraut, bevor er ein Wort über KI gesagt hat.
+        </div>
+      </div>
+
+      <div class="team-card" style="background: var(--brand-pale); padding: 28px 28px;">
+        <div>
+          <div style="font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brand); margin-bottom: 6px;">Saber Romdhani</div>
+          <div style="font-family: var(--serif); font-size: 20px; color: var(--ink); line-height: 1.2; margin-bottom: 4px;">Er entzündet.</div>
+          <div style="font-size: 13px; color: var(--ink-faint);">Aktivierung · Befähigung · Prozesse</div>
+        </div>
+        <div style="font-size: 14px; color: var(--ink-muted); line-height: 1.65;">
+          Saber ist derjenige, der nach dem offiziellen Startmoment wirklich in die Unternehmen geht. Der Einstieg schafft Vertrauen. Und dieses Vertrauen öffnet Türen, die vorher geschlossen waren: in Teams, in Abteilungen, in Prozesse. Was als überschaubares erstes Mandat beginnt, wird zur Grundlage für eine tiefere Zusammenarbeit. Saber aktiviert Menschen, nimmt Unsicherheit raus und baut gemeinsam mit Oliver die Prozesse, die aus dem offiziellen Rahmen eine produktive Arbeitsweise machen. <strong style="color: var(--ink);">Er sorgt dafür, dass Added Value nicht einmalig kommt, sondern bleibt.</strong>
+        </div>
+      </div>
+
+      <div class="team-card" style="background: var(--warm-white); padding: 28px 28px;">
+        <div>
+          <div style="font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brand); margin-bottom: 6px;">Oliver Bargfeld</div>
+          <div style="font-family: var(--serif); font-size: 20px; color: var(--ink); line-height: 1.2; margin-bottom: 4px;">Er gibt dem Ganzen Architektur.</div>
+          <div style="font-size: 13px; color: var(--ink-faint);">Strategie · Konzept · Fahrplan</div>
+        </div>
+        <div style="font-size: 14px; color: var(--ink-muted); line-height: 1.65;">
+          Zwischen "bei uns nutzen manche schon KI" und "wir haben eine produktive Arbeitsweise" liegt eine Architekturaufgabe. Oliver erkennt Muster, zieht Fäden zusammen, macht aus vielen Möglichkeiten eine klare Logik. <strong style="color: var(--ink);">Er übersetzt die Lage in Strategie, Leitplanken und einen belastbaren nächsten Schritt</strong> , und sorgt dafür, dass das, was Saber aktiviert, auf einem tragfähigen Fundament steht.
+        </div>
+      </div>
+
+    </div>
+
+    <div class="pullquote">
+      <div class="pullquote-text">"Added Value verbindet den Zugang zur Geschäftsführung, die strategische Architektur und die menschliche Aktivierung , damit KI im Unternehmen offiziell, sicher und produktiv wird."</div>
+      <div class="pullquote-source">Der Pitch-Satz</div>
+    </div>
+  </div>
+
+  <!-- CLOSING -->
+  <div class="closing">
+    <div class="closing-eyebrow">Die These in einem Satz</div>
+    <h2 class="closing-headline">KI ist in jedem Unternehmen<br>schon angekommen.<br><em>Machen Sie es offiziell.</em></h2>
+    <p class="closing-sub">KI ist keine Software, die man kauft. Sie ist eine neue Arbeitsweise, die sich bereits ausbreitet. Unkoordiniert, ungeregelt, ohne Rahmen. Unsere Aufgabe ist es nicht, KI einzuführen. Unsere Aufgabe ist es, den Moment zu gestalten, in dem Unternehmen aufhören, so zu tun, als wäre KI noch nicht da.</p>
+  </div>
+
+</div>
+</body>
+</html>
